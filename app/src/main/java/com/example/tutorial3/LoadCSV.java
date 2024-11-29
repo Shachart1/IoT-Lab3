@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,6 +23,9 @@ import java.util.List;
 
 
 public class LoadCSV extends AppCompatActivity {
+
+    private final CsvServiceClass csvService = new CsvServiceClass();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +36,8 @@ public class LoadCSV extends AppCompatActivity {
         ArrayList<String[]> csvData1 = new ArrayList<>();
         ArrayList<String[]> csvData2 = new ArrayList<>();
 
-
-        csvData1 = CsvRead("/sdcard/csv_dir/data1.csv");
-        csvData2 = CsvRead("/sdcard/csv_dir/data2.csv");
+        csvData1 = csvService.CsvRead("/sdcard/csv_dir/data1.csv");
+        csvData2 = csvService.CsvRead("/sdcard/csv_dir/data2.csv");
 
         LineDataSet lineDataSet1 =  new LineDataSet(DataValues(csvData1),"Data Set 1");
         lineDataSet1.setColor(R.color.teal_200);
@@ -52,8 +55,6 @@ public class LoadCSV extends AppCompatActivity {
         lineChart.invalidate();
 
 
-
-
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,22 +68,7 @@ public class LoadCSV extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private ArrayList<String[]> CsvRead(String path){
-        ArrayList<String[]> CsvData = new ArrayList<>();
-        try {
-            File file = new File(path);
-            CSVReader reader = new CSVReader(new FileReader(file));
-            String[]nextline;
-            while((nextline = reader.readNext())!= null){
-                if(nextline != null){
-                    CsvData.add(nextline);
 
-                }
-            }
-
-        }catch (Exception e){}
-    return CsvData;
-    }
 
     private ArrayList<Entry> DataValues(ArrayList<String[]> csvData){
         ArrayList<Entry> dataVals = new ArrayList<Entry>();

@@ -32,12 +32,13 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 public class MainActivity extends AppCompatActivity {
     LineChart mpLineChart;
     int counter = 1;
-    int val = 40;
-    int val2 = 40;
+    int val = ((int) Math.random() * 100);
+    int val2 = ((int) Math.random() * 100);
 
     boolean isDeleting;
     private Handler mHandlar = new Handler();  //Handlar is used for delay definition in the loop
 
+    private final CsvServiceClass csvService = new CsvServiceClass();
 
 
     public MainActivity() throws FileNotFoundException {
@@ -103,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
                 finalLineDataSet.notifyDataSetChanged(); // let the data know a dataSet changed
                 mpLineChart.notifyDataSetChanged(); // let the chart know it's data changed
                 mpLineChart.invalidate(); // refresh
-                val = (int) (Math.random() * 80);
-                val2 = (int) (Math.random() * 80);
+                val = (int) (Math.random() * 100);
+                val2 = (int) (Math.random() * 100);
 
-                saveToCsv("/sdcard/csv_dir/data1",String.valueOf(counter),String.valueOf(val));
-                saveToCsv("/sdcard/csv_dir/data2",String.valueOf(counter),String.valueOf(val2));
+                csvService.saveToCsv("/sdcard/csv_dir/data1",String.valueOf(counter),String.valueOf(val), MainActivity.this);
+                csvService.saveToCsv("/sdcard/csv_dir/data2",String.valueOf(counter),String.valueOf(val2), MainActivity.this);
 
                 counter += 1;
                 mHandlar.postDelayed(this,500);
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 counter = 1;
                 isDeleting = false;
             }
+
         });
 
         
@@ -145,24 +147,9 @@ public class MainActivity extends AppCompatActivity {
         return dataVals;
     }
 
-    private void saveToCsv(String path,String str1, String str2){
-        try{
-            File file = new File(path);
-            file.mkdirs();
-            String csv = path + ".csv";
-            CSVWriter csvWriter = new CSVWriter(new FileWriter(csv,true));
-            String row[]= new String[]{str1,str2};
-            csvWriter.writeNext(row);
-            csvWriter.close();
-        } catch (IOException e) {
-            Toast.makeText(MainActivity.this,"ERROR",Toast.LENGTH_LONG).show();
-
-            e.printStackTrace();
-        }
-    }
    private void OpenLoadCSV(){
-     Intent intent = new Intent(this,LoadCSV.class);
-     startActivity(intent);
+        Intent intent = new Intent(this,LoadCSV.class);
+        startActivity(intent);
    }
 
 
