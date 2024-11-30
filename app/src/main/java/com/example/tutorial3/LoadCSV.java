@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -61,10 +62,25 @@ public class LoadCSV extends AppCompatActivity {
                 ClickBack();
             }
         });
+
+        Button clearButton = findViewById(R.id.button_clear);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lineChart.getData() != null) {
+                    lineChart.clear();
+                    lineDataSet2.clear();
+                    lineDataSet1.clear();
+                } else {
+                    Toast.makeText(LoadCSV.this, "The chart is already clear.", Toast.LENGTH_SHORT).show();
+                }
+                lineChart.invalidate();
+            }
+        });
     }
 
     private void ClickBack(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
