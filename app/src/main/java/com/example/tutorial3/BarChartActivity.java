@@ -1,8 +1,11 @@
 package com.example.tutorial3;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +47,23 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.setData(data);
         barChart.setFitBars(true);
         barChart.invalidate();
+
+        Button buttonBack = findViewById(R.id.button_back);
+        Button buttonCsvShow = (Button) findViewById(R.id.button2);
+        buttonCsvShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenLoadCSV();
+
+            }
+        });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BarChartActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private BarDataSet createBar(float x, float value, String label, int color) {
@@ -91,5 +111,8 @@ public class BarChartActivity extends AppCompatActivity {
 
         return yValues;
     }
-
+    private void OpenLoadCSV(){
+        Intent intent = new Intent(this,LoadCSV.class);
+        startActivity(intent);
+    }
 }

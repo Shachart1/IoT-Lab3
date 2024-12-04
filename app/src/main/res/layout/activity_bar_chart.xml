@@ -13,4 +13,19 @@
         android:layout_height="320dp"
         android:background="@color/white"/>
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:text="open CSV" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:text="Line Chart" />
+
+
 </LinearLayout>

@@ -13,10 +13,18 @@
         android:background="@color/white" />
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/bar_navigate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="back" />
+        android:layout_gravity="center"
+        android:text="Bar Chart" />
+
+    <Button
+        android:id="@+id/line_navigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Line Chart"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/button_clear"

@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonClear = (Button) findViewById(R.id.button1);
         Button buttonCsvShow = (Button) findViewById(R.id.button2);
-
+        Button buttonNavigate = findViewById(R.id.button_navigate);
         buttonCsvShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
 
         
         mHandlar.postDelayed(DataUpdate,500);
+        buttonNavigate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BarChartActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
