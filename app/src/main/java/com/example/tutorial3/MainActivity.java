@@ -3,6 +3,7 @@ package com.example.tutorial3;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         LineDataSet lineDataSet1 =  new LineDataSet(dataValues1(), "Data Set 1");
         lineDataSet1.setColor(R.color.teal_200);
         LineDataSet lineDataSet2 = new LineDataSet(dataValues1(), "Data Set 2");
-        lineDataSet2.setColor(R.color.black);
+        lineDataSet2.setColor(Color.RED);
 
         ArrayList<ILineDataSet> dataSetsLine = new ArrayList<>();
 

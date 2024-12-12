@@ -1,6 +1,7 @@
 package com.example.tutorial3;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,8 +40,8 @@ public class LoadCSV extends AppCompatActivity {
         lineDataSet1.setColor(R.color.teal_200);
         lineDataSet1.setCircleColor(R.color.teal_200);
         LineDataSet lineDataSet2 =  new LineDataSet(DataValues(csvData2),"Data Set 2");
-        lineDataSet2.setColor(R.color.black);
-        lineDataSet2.setCircleColor(R.color.black);
+        lineDataSet2.setColor(Color.RED);
+        lineDataSet2.setCircleColor(Color.RED);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
