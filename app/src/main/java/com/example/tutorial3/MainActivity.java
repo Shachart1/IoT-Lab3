@@ -1,9 +1,5 @@
 package com.example.tutorial3;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,16 +8,11 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import com.opencsv.CSVWriter;
-
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -29,11 +20,14 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     LineChart mpLineChart;
     int counter = 1;
-    int val = ((int) Math.random() * 100);
-    int val2 = ((int) Math.random() * 100);
+    int val = (int) (Math.random() * 100);
+    int val2 = (int) (Math.random() * 100);
 
     boolean isDeleting;
     private Handler mHandlar = new Handler();  //Handlar is used for delay definition in the loop
@@ -107,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 val = (int) (Math.random() * 100);
                 val2 = (int) (Math.random() * 100);
 
-                csvService.saveToCsv("/sdcard/csv_dir/data1",String.valueOf(counter),String.valueOf(val), MainActivity.this);
-                csvService.saveToCsv("/sdcard/csv_dir/data2",String.valueOf(counter),String.valueOf(val2), MainActivity.this);
+                csvService.saveToCsv("/sdcard/csv_dir/data1", String.valueOf(counter), String.valueOf(val), MainActivity.this);
+                csvService.saveToCsv("/sdcard/csv_dir/data2", String.valueOf(counter), String.valueOf(val2), MainActivity.this);
 
                 counter += 1;
                 mHandlar.postDelayed(this,500);
