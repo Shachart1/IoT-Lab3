@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class CsvServiceClass {
@@ -31,7 +32,10 @@ public class CsvServiceClass {
                 }
             }
 
-        }catch (Exception e){}
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return CsvData;
     }
 
@@ -49,6 +53,17 @@ public class CsvServiceClass {
 
             e.printStackTrace();
         }
+    }
+
+    public void deleteCsvContent(String path) {
+
+        try {
+            PrintWriter pw = new PrintWriter(path);
+            pw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

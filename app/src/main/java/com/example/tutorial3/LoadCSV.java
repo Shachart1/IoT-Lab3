@@ -18,6 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -83,7 +84,11 @@ public class LoadCSV extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoadCSV.this, "The chart is already clear.", Toast.LENGTH_SHORT).show();
                 }
+
                 lineChart.invalidate();
+
+                csvService.deleteCsvContent("/sdcard/csv_dir/data1.csv");
+                csvService.deleteCsvContent("/sdcard/csv_dir/data2.csv");
             }
         });
     }
